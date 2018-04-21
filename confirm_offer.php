@@ -1,4 +1,6 @@
-<?php require_once 'connect_truc-go.php';
+<?php
+require_once ('header.php');
+require_once 'connect.php';
 $firstName= $_POST['firstname'];
 $lastName = $_POST['lastname'];
 $address = $_POST['address'];
@@ -35,3 +37,6 @@ if(mysqli_stmt_execute($reqPrepare)){
 }else{
 	echo "execute passe pas";
 }
+
+require_once ('header.php');
+?>
