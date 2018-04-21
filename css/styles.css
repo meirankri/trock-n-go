@@ -1,0 +1,97 @@
+	body{
+		font-family:Lato,'Helvetica Neue',Helvetica,Arial,sans-serif
+		}
+
+	h1,h2,h3,h4,h5,h6{
+		font-family:Lato,'Helvetica Neue',Helvetica,Arial,sans-serif;
+
+		font-weight:700
+	}
+
+	header.masthead{
+		position:relative;
+		background-color:#083D44;
+		-webkit-background-size:cover;
+		-moz-background-size:cover;
+		-o-background-size:cover;
+		background-size:cover;
+		padding-top:16rem;
+		padding-bottom:21.1rem;
+	}
+
+	header.masthead .overlay{
+		position:absolute;
+		background-color:#212529;
+		height:100%;
+		width:100%;
+		top:0;
+		left:0;
+		opacity:.3
+	}
+
+	header.masthead h1{
+		font-size:2rem
+	}
+
+	#logo{
+		width: 19%;
+		height: 10%;
+		margin: auto;
+		padding: auto;
+		margin-top: 8px;
+
+	}
+
+
+
+	.navbar {
+		height: 10%;
+		width: 10%
+		margin: auto;
+		padding: auto;
+		background-color: rgba(255, 255, 255, 0.9);
+
+	}
+
+	#navbarResponsive{
+		width: 50%;
+	}
+
+	.btn{
+		background: #1CB91C;
+		color: #fff;
+	}
+
+	.btn:hover{
+		background: #1CB91C;
+		opacity: 0.9;
+	}
+
+	.navbar-light .navbar-nav .nav-link{
+		color: #23393C;
+	}
+
+	.navbar-light .navbar-nav .nav-link:hover{
+		color: #23393C;
+		opacity: 0.7;
+	}
+
+	.rechercher{
+		width: 70%;
+		margin:auto;
+	}
+	.montrer {
+		border: solid 2px red;
+		text-align: center;
+		padding: 10px;
+		margin-bottom: 10px;
+	}
+	.cacher{
+		display: none;
+		border: outset 2px blue;
+		margin-top: 10px;
+	}
+
+	.new-search{
+		margin-top:300px;
+	}
