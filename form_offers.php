@@ -1,19 +1,10 @@
-<?php require_once 'connect_truc-go.php';
+<?php
+require_once ('header.php');
+?>
+<?php require_once 'connect.php';
 
  ?>
-<!DOCTYPE html>
-   <html lang="en">
-   <head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-     <link rel="stylesheet" href="bootstrap.css">
-     <script src="bootstrap.js">
 
-     </script>
-     <title>Document</title>
-   </head>
-   <body>
      <form  action="confirm_offer.php" method="post" class="m-5">
        <div class="form-group">
          <h1 class="text-center">Je poste une annonce</h1>
@@ -58,5 +49,6 @@
          <button type="submit" name="button">Envoyez</button>
       </div>
     </form>
-   </body>
-</html>
+    <?php
+    require_once ('footer.php');
+    ?>
