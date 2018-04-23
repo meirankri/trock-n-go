@@ -1,4 +1,4 @@
-<?php require_once 'connect_truc-go.php';
+<?php require_once 'connect.php';
 $firstName= htmlspecialchars($_POST['firstname']);
 $lastName = htmlspecialchars($_POST['lastname']);
 $address = htmlspecialchars($_POST['address']);
