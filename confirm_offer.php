@@ -1,42 +1,74 @@
-<?php
-require_once ('header.php');
-require_once 'connect.php';
-$firstName= $_POST['firstname'];
-$lastName = $_POST['lastname'];
-$address = $_POST['address'];
-$city = $_POST['city'];
-$zipCode = $_POST['zipcode'];
-$email = $_POST['email'];
-$title = $_POST['title'];
-$description = $_POST['description'];
-$photo = $_POST['photo'];
-$categorie = $_POST['category'];
-$type = $_POST['type'];
+<?php require_once 'connect_truc-go.php';
+$firstName= htmlspecialchars($_POST['firstname']);
+$lastName = htmlspecialchars($_POST['lastname']);
+$address = htmlspecialchars($_POST['address']);
+$city = htmlspecialchars($_POST['city']);
+$zipCode = htmlspecialchars($_POST['zipcode']);
+$email = htmlspecialchars($_POST['email']);
+$title = htmlspecialchars($_POST['title']);
+$description = htmlspecialchars($_POST['description']);
+$photo = htmlspecialchars($_FILES['photo']['name']);
+$categorie = htmlspecialchars($_POST['category']);
+$type = htmlspecialchars($_POST['type']);
 
-
-if (empty($photo && $description)) {
-
-  /*header('Location: http://localhost/trukngo/form_offers.php');
-  exit();*/
+//condition si aucune valeur n'est entrez on revient au formulaire
+if (empty($title && $address && $city && $zipCode && $email )) {
+  echo "Vous avez des champs non rempli";
+  header('Refresh:5; url=http://localhost/trukngo/form_offers.php');
+  exit();
 }
+
+//test si il n'y a pas de photo le nom de la photo est $photoName
+if (empty($photo)) {
+  $photoName = "pasPhoto.png";
+  $photo = $photoName;
+  }
+
 /* test query insert sans prepare*/
 $reqPrepare = mysqli_prepare($dbconnect, 'insert into offers (firstname,lastname,address,city,zipcode,email,title,description,photo,category,type) values(?,?,?,?,?,?,?,?,?,?,?)');
 if ($reqPrepare) {
-  echo "passe ";
+  $pre = 1;
 }else {
-  echo "passe pas ";
+  $pre = 0;
 }
 if(mysqli_stmt_bind_param($reqPrepare, "ssssissssss", $firstName,$lastName,$address,$city,$zipCode,$email,$title,$description,$photo,$categorie,$type)){
-	echo "bind param passe ";
+	$par = 1;
 }else{
-	echo "bind param passe  pas ";
+	$par = 0;
 }
 //execute la requete prepare
 if(mysqli_stmt_execute($reqPrepare)){
-	echo "execute passe ";
+	$exec = 1;
 }else{
-	echo "execute passe pas";
+	$exec = 0;
+}
+if(mysqli_insert_id($dbconnect)){
+	$lastId = mysqli_insert_id($dbconnect);
+	$lid = 1;
+}else{
+	$lid = 0;
 }
 
-require_once ('header.php');
-?>
+
+
+/*envoie de fichier avec upload dans un repertoire, en utilisant le derniere id entré comme nom*/
+$photo = $_FILES['photo']['name'];
+$tmpName = $_FILES['photo']['tmp_name'];
+$bonne_extension =array('jpg','jpeg','gif','png');
+$extensionFiles = strtolower(substr(strrchr($photo, '.'), 1));
+if (in_array($extensionFiles, $bonne_extension)) {
+	$photoPath = "img/{$lastId}.{$extensionFiles}";
+	$envoie = move_uploaded_file($tmpName, $photoPath);
+  $photoName = $lastId.".".$extensionFiles;
+
+}
+
+$sql = "UPDATE offers SET photo='$photoName' WHERE id=$lastId";
+if (mysqli_query($dbconnect,$sql)){
+  $pho = 1;
+}
+
+if ($pre = 1 && $par = 1 && $exec = 1 && $li = 1 && $pho = 1) {
+  // affichage de message de confirmation
+  echo "merci d'avoir posté cette annonce";
+}
