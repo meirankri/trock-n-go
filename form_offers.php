@@ -1,42 +1,43 @@
 <?php
 require_once ('header.php');
-?>
-<?php require_once 'connect.php';
+require_once 'connect.php';
 
  ?>
 
-     <form  action="confirm_offer.php" method="post" class="m-5">
+ <header class="masthead text-white">
+  <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+     <form class="form-offers" action="confirm_offer.php" method="post" class="m-5 col-6">
        <div class="form-group">
          <h1 class="text-center">Je poste une annonce</h1>
          <label for="firstname">Prénom</label>
-         <input class="form-control" type="text" name="firstname" placeholder="entrez votre prénom" value="test">
+         <input class="form-control" type="text" name="firstname" placeholder="Entrez votre prénom" value="">
          <label for="lastname">Nom</label>
-         <input class="form-control" type="text" name="lastname" placeholder="entrez votre nom" value="test">
+         <input class="form-control" type="text" name="lastname" placeholder="Entrez votre nom" value="">
          <label for="address">Votre adresse</label>
-         <input class="form-control" type="text" name="address" placeholder="entrez votre adresse"  value="test">
+         <input class="form-control" type="text" name="address" placeholder="Entrez votre adresse"  value="">
          <label for="city">Votre ville</label>
-         <input class="form-control" type="text" name="city" placeholder="votre ville" value="test">
+         <input class="form-control" type="text" name="city" placeholder="Votre ville" value="">
          <label for="zipcode">Code postale</label>
-         <input class="form-control" type="number" name="zipcode" placeholder="entrez votre code postal" value=93500>
+         <input class="form-control" type="number" name="zipcode" placeholder="Entrez votre code postal" value=>
          <label for="email">Email</label>
-         <input class="form-control" type="text" name="email" placeholder="entrez votre email" value="test">
+         <input class="form-control" type="text" name="email" placeholder="Entrez votre email" value="">
          <label for="title">Titre de l'annonce</label>
-         <input class="form-control" type="text" name="title" placeholder="entrez le titre de l'annonce" value="test">
+         <input class="form-control" type="text" name="title" placeholder="Entrez le titre de l'annonce" value="">
          <label for="description">Description de l'annonce</label>
-         <input class="form-control" type="text" name="description" placeholder="entrez la description de l'annonce" value="test">
+         <input class="form-control" type="text" name="description" placeholder="Entrez la description de l'annonce" value="">
          <label for="photo">Envoyez une Photo</label>
-         <input class="form-control" type="text" name="photo">
+         <input class="form-control" type="file" name="photo">
          <div class="form-group">
            <label for="category">Categorie</label>
            <select class="form-control" name="category" >
-             <option>véhicule</option>
-             <option selected>informatique</option>
-             <option>bureatique</option>
-             <option>vêtements</option>
-             <option>meubles</option>
-             <option>jouets</option>
-             <option>figurines</option>
-             <option>timbres</option>
+             <option>Véhicule</option>
+             <option selected>Informatique</option>
+             <option>Bureatique</option>
+             <option>Vêtements</option>
+             <option>Meubles</option>
+             <option>Jouets</option>
+             <option>Figurines</option>
+             <option>imbres</option>
            </select>
          </div>
          <div class="form-group">
@@ -46,9 +47,13 @@ require_once ('header.php');
            <label for="type">Echange</label>
            <input type="radio" name="type" value="echange" checked>
          </div>
-         <button type="submit" name="button">Envoyez</button>
+         <div class="col-6 col-md-3">
+         <button type="submit" name="button" value="Search" class="btn btn-block btn-lg">Envoyez</button>
+       </div>
       </div>
     </form>
+  </div>
+  </header>
     <?php
     require_once ('footer.php');
     ?>

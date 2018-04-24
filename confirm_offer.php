@@ -1,4 +1,7 @@
-<?php require_once 'connect.php';
+<?php
+require_once ('header.php');
+require_once 'connect.php';
+
 $firstName= htmlspecialchars($_POST['firstname']);
 $lastName = htmlspecialchars($_POST['lastname']);
 $address = htmlspecialchars($_POST['address']);
@@ -14,7 +17,7 @@ $type = htmlspecialchars($_POST['type']);
 //condition si aucune valeur n'est entrez on revient au formulaire
 if (empty($title && $address && $city && $zipCode && $email )) {
   echo "Vous avez des champs non rempli";
-  header('Refresh:5; url=http://localhost/trukngo/form_offers.php');
+  header('Refresh:5; url=form_offers.php');
   exit();
 }
 
@@ -72,3 +75,7 @@ if ($pre = 1 && $par = 1 && $exec = 1 && $li = 1 && $pho = 1) {
   // affichage de message de confirmation
   echo "merci d'avoir posté cette annonce";
 }
+
+
+require_once ('footer.php');
+?>
