@@ -8,10 +8,10 @@ include('header.php');
       <div class="container">
         <div class="row">
           <div class="col-xl-9 mx-auto">
-            <h1 class="mb-5">Troc'n Go vous souhaite la bienvenue !</h1>
+            <h1 class="bvn mb-5">Troc'n Go vous souhaite la bienvenue !</h1>
           </div>
           <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-            <form action="research.php" method="GET">
+            <form action="research.php" method="POST">
               <div class="form-row">
                 <div class="col-12 col-md-9 mb-2 mb-md-0">
                   <input type="text" name="recherche" class="form-control form-control-lg" placeholder="Que recherchez vous ?">
