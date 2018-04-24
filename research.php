@@ -23,7 +23,9 @@ require_once ('connect.php');
 
 
 <?php
-$recherche= $_POST['recherche'];
+if (isset($_POST['recherche'])) {
+	$recherche= $_POST['recherche'];
+}
 $query = "SELECT * FROM offers WHERE (title like '%$recherche%') or (description like '%$recherche%') ORDER BY id DESC";
 $resultat = mysqli_query($dbconnect, $query);
 $numberRows = mysqli_num_rows($resultat);
