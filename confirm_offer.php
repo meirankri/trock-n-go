@@ -55,7 +55,7 @@ if(mysqli_insert_id($dbconnect)){
 
 
 /*envoie de fichier avec upload dans un repertoire, en utilisant le derniere id entré comme nom*/
-$photo = $_FILES['photo']['name'];
+
 $tmpName = $_FILES['photo']['tmp_name'];
 $bonne_extension =array('jpg','jpeg','gif','png');
 $extensionFiles = strtolower(substr(strrchr($photo, '.'), 1));
