@@ -25,7 +25,7 @@ if ( $numberRows === 0){ ?>
 			<img src="img/<?php echo ($donnees['type'])?>">
 			<h1><?php echo ($donnees['title'])?></h1>
 			<p><?php echo ($donnees['description'])?></p>
-			<img alt="photo_annonce" class="photo-annonce" src="img/<?php echo ($donnees['photo'])?>">
+			<img alt="photo_annonce" class="photo-annonce" src="img/<?php echo ($donnees['photo'])?>" onclick="zoom(this)">
 			<button class="toggleMore">Contacter</button>
 			<div class="cacher">
 			<h2><?php echo ($donnees['firstname'])?></h2>

@@ -43,13 +43,13 @@ if ( $numberRows === 0){ ?>
 <?php
 } else { ?>
 	<p><?php echo $numberRows?> resultat correspondent a votre recherche : <?php echo $recherche ?></p>
-	<?php while($donnees = mysqli_fetch_assoc($resultat))
-	{ ?>
+	<?php while ($donnees = mysqli_fetch_assoc($resultat)){
+ ?>
 		<div class="rechercher montrer">
 			<img src="img/<?php echo ($donnees['type'])?>">
 			<h1><?php echo ($donnees['title'])?></h1>
 			<p><?php echo ($donnees['description'])?></p>
-			<img class="img" alt="photo_annonce" src="img/<?php echo ($donnees['photo'])?>">
+        	<img class="photo-annonce" alt="photo_annonce" src="img/<?php echo ($donnees['photo'])?>" onclick="zoom(this)">
 			<button class="toggleMore">Contacter</button>
 			<div class="cacher">
 			<h2><?php echo ($donnees['firstname'])?></h2>
