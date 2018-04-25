@@ -4,15 +4,19 @@ require_once 'connect.php';
 
  ?>
 
- <header class="masthead text-white">
+ <header class="masthead text-white" >
   <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
      <form class="form-offers" action="confirm_offer.php" method="post" class="m-5 col-6" enctype="multipart/form-data">
        <div class="form-group">
          <h1 class="text-center">Je poste une annonce</h1>
          <label for="firstname">Prénom</label>
-         <input class="form-control" type="text" name="firstname" placeholder="Entrez votre prénom" value="">
+         <input  class="form-control" type="text" name="firstname" placeholder="Entrez votre prénom" value="">
          <label for="lastname">Nom</label>
          <input class="form-control" type="text" name="lastname" placeholder="Entrez votre nom" value="">
+         <label for="localisation"></label>
+         <input class="form-control geo" type="text" name="lat" id="latitude" readonly>
+         <input class="form-control geo" type="text" name="lng" id="longitude" readonly>
+         <button type="button" onfocus="getLocation()">Géolocalise toi</button><br>
          <label for="address">Votre adresse</label>
          <input class="form-control" type="text" name="address" placeholder="Entrez votre adresse"  value="">
          <label for="city">Votre ville</label>

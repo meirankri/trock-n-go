@@ -1,3 +1,13 @@
+    <div id="myModal" class="modal">
+
+    <!-- The Close Button -->
+    <span class="close">&times;</span>
+
+    <!-- Modal Content (The Image) -->
+    <img class="modal-content" id="img01">
+    </div>
+
+
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -9,9 +19,13 @@
       crossorigin="anonymous">
     </script>
     <script>
-      $('.toggleMore').click(function(){
-        $(this).next().slideToggle();
-      });
+
+//affichage div cache 
+$('.toggleMore').click(function(){
+    $(this).next().slideToggle();
+});
+
+//reauete ajax recherche
 
 var xmlhttp = new XMLHttpRequest();
 function showResult(word){
@@ -30,6 +44,44 @@ $('#search').click(function(){
   var searchTerm = $('#recherche').val();
   showResult(searchTerm);
 })
+
+//Slider preniere page
+$('#slider div:first-child').addClass('active');
+
+//modal page recherche
+var modal = document.getElementById('myModal');
+var modalImg = document.getElementById("img01");
+
+function zoom(element) {
+  modal.style.display = "block";
+  modalImg.src = element.src;
+
+}
+
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+//Geolocalistion
+var x = document.getElementById("latitude");
+var y = document.getElementById("longitude");
+
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        x.innerHTML = "La geolocation n'est pas supporté sur votre navigateur, veuillez entrez votre adresse.";
+    }
+}
+
+function showPosition(position) {
+    x.value =  + position.coords.latitude;
+    y.value  = position.coords.longitude;
+}
 
 
     </script>

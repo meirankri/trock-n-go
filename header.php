@@ -43,7 +43,7 @@
               <a class="nav-link" href="form_offers.php">Déposer une annonce</a>
             </li>
 			<li class="nav-item">
-              <a class="nav-link" href="#">Toutes les annonces</a>
+              <a class="nav-link" href="alloffers.php">Toutes les annonces</a>
             </li>
 
           </ul>

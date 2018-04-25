@@ -1,5 +1,6 @@
 <?php
 include('header.php');
+require_once ('connect.php');
 ?>
 
     <!-- Masthead -->
@@ -25,7 +26,35 @@ include('header.php');
         </div>
       </div>
     </header>
+    <div class="container">
+      <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+        <div id="slider" class="carousel-inner">
+          <?php
+              $query = "SELECT * from offers order by id DESC limit 5";
+              $resultat = mysqli_query($dbconnect, $query);
+               while($donnees = mysqli_fetch_assoc($resultat))
+              { ?>
+                <div class="carousel-item rechercher montrer">
+                  <img src="img/<?php echo ($donnees['type'])?>">
+                  <h1><?php echo ($donnees['title'])?></h1>
+                  <p><?php echo ($donnees['description'])?></p>
+                  <img class="img" alt="photo_annonce" src="img/<?php echo ($donnees['photo'])?>">
+                  <button class="toggleMore">Contacter</button>
+                  <div class="cacher">
+                    <h2><?php echo ($donnees['firstname'])?></h2>
+                    <p><?php echo ($donnees['address'])?></p>
+                    <p><?php echo ($donnees['city'])?></p>
+                    <p><?php echo ($donnees['email'])?></p>
+                  </div>
+                </div>
 
+              <?php }
+              mysqli_free_result($resultat);
+
+           ?>
+         </div>
+       </div>
+    </div>
 
 
 
