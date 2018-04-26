@@ -7,7 +7,7 @@
   $lat = htmlspecialchars($_POST['lat']);
   $lng = htmlspecialchars($_POST['lng']);
   $address = htmlspecialchars($_POST['address']);
-  $city = htmlspecialchars($_POST['city']);
+  $city = htmlspecialchars(strtolower($_POST['city']));
   $zipCode = htmlspecialchars($_POST['zipcode']);
   $email = htmlspecialchars($_POST['email']);
   $title = htmlspecialchars($_POST['title']);
