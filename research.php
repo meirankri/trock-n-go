@@ -65,11 +65,11 @@ while ($data = mysqli_fetch_assoc($selectCity)){  ?>
 
 			 <div class="row">
               <div class="col-md-6 col-xl-6 col-xs-6 col-lg-6 ">
-               <img class=" img img-fluid" alt="photo_annonce" src="img/<?php echo ($donnees['photo'])?>" width="300px" height="200px" onclick="zoom(this)">
+               <img class=" img img-fluid" alt="photo_annonce" src="img/<?php echo ($donnees['photo'])?>"  onclick="zoom(this)">
 
              </div>
 				<div class="col-md-6 col-xl-6 col-xs-6 col-lg-6 ">
-				  <img  src="img/<?php echo ($donnees['type'])?>.png" width="30px" height="30px">
+				  <img  src="img/<?php echo ($donnees['type'])?>.png" class="icon">
 					<h1><?php echo ($donnees['title'])?></h1>
 					<p><?php echo ($donnees['description'])?></p>
 

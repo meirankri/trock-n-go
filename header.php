@@ -38,7 +38,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse pull-right" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto pull-right">
+        <ul class="navbar-nav ml-auto pull-left">
           <li class="nav-item active mr-auto">
             <a class="nav-link" href="index.php">Accueil
               <span class="sr-only">(current)</span>
