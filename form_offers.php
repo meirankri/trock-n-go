@@ -13,7 +13,7 @@ require_once 'connect.php';
        <label for="lastname">Nom:&nbsp; </label>
        <input class="form-control" type="text" name="lastname" placeholder="Entrez votre nom" value="" onfocus="this.placeholder = ''"  onblur="this.placeholder = 'Entrez votre nom'" required >
        <label for="localisation"></label>
-       <button type="button" class="btn btn-lg btn-block" onfocus="getLocation()">Géolocalise toi</button>
+       <button type="button" class="btn btn-lg btn-block" onclick="getLocation()">Géolocalise toi</button>
        <input class="form-control geo" type="text" name="lat" id="latitude" readonly>
        <input class="form-control geo" type="text" name="lng" id="longitude" readonly>
        <label for="address">Votre adresse: &nbsp; </label>
