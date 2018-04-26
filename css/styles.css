@@ -99,14 +99,14 @@
 	}
 
 	.img{
-		max-width: 250px;
-		max-height: 250px;
+	max-width: 100%;
+	max-height: 300px;
 
 	}
 
 	.form-offers{
-		margin-left: 100px;
-		margin-right: 100px;
+		margin-left: 0;
+		margin-right: 0;
 		text-align: left;
 	}
 
@@ -251,4 +251,3 @@
 	width: 30px;
 	height: 30px;
 }
-

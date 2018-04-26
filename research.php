@@ -17,7 +17,7 @@ require_once ('connect.php');
 	</div>
 	<div class="select ">
 <select id="ville" class="form-control" name="ville" onchange="filtreVille()">
-	<option value="all" selected>Tout</option>
+	<option value="all" selected>Ville</option>
 <?php
 $selectCity = mysqli_query($dbconnect, "SELECT DISTINCT city FROM offers WHERE city != '' ");
 while ($data = mysqli_fetch_assoc($selectCity)){  ?>
@@ -26,7 +26,7 @@ while ($data = mysqli_fetch_assoc($selectCity)){  ?>
 	</select>
 </div>
 	<div id="fitre" class="mt-2">
-		<button class="btn  " type="button" id="all">Tout</button>
+		<button class="btn  " type="button" id="all" >Tout</button>
 		<button class="btn  " type="button" id="don">Don</button>
 		<button class="btn  " type="button" id="echange">Echange</button>
 	</div>
@@ -83,7 +83,7 @@ while ($data = mysqli_fetch_assoc($selectCity)){  ?>
 			<h2><?php echo ($donnees['firstname'])?></h2>
 			<p><?php echo ($donnees['address'])?></p>
 			<p><?php echo ($donnees['city'])?></p>
-			<p><?php echo ($donnees['email'])?></p>
+			<p><a href="mailto:<?php echo ($donnees['email'])?>"><?php echo ($donnees['email'])?></a></p>
 		</div>
 	</div>
 
@@ -94,4 +94,3 @@ mysqli_free_result($resultat);
 }
 require_once ('footer.php');
 ?>
-</div>

@@ -7,7 +7,7 @@
       <img class="modal-content" id="img01">
     </div>
 
-
+  </div>
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -110,3 +110,5 @@ function showPosition(position) {
 
 
 </script>
+</body>
+</html>

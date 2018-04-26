@@ -30,7 +30,7 @@ require_once ('connect.php');
             var markers = xml.documentElement.getElementsByTagName('marker');
             Array.prototype.forEach.call(markers, function(markerElem) {
               var title = markerElem.getAttribute('title');
-              var address = markerElem.getAttribute('address');
+              var email = markerElem.getAttribute('email');
               var type = markerElem.getAttribute('type');
               var point = new google.maps.LatLng(
                 parseFloat(markerElem.getAttribute('lat')),
@@ -43,7 +43,7 @@ require_once ('connect.php');
               infowincontent.appendChild(document.createElement('br'));
 
               var text = document.createElement('text');
-              text.textContent = address
+              text.textContent = email
               infowincontent.appendChild(text);
               var icon = customLabel[type] || {};
               var marker = new google.maps.Marker({
