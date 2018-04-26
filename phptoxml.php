@@ -13,7 +13,7 @@ return $xmlStr;
 
 // Opens a connection to a MySQL server
 // Select all the rows in the markers table
-$query = "SELECT title,address,lat,lng,type FROM offers";
+$query = "SELECT title,email,lat,lng,type FROM offers";
 $result = mysqli_query($dbconnect, $query);
 
 
@@ -27,7 +27,7 @@ while ($row = mysqli_fetch_assoc($result)){
   // Add to XML document node
   echo '<marker ';
   echo 'title="' . parseToXML($row['title']) . '" ';
-  echo 'address="' . parseToXML($row['address']) . '" ';
+  echo 'email="' . parseToXML($row['email']) . '" ';
   echo 'lat="' . $row['lat'] . '" ';
   echo 'lng="' . $row['lng'] . '" ';
   echo 'type="' . $row['type'] . '" ';

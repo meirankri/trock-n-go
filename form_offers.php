@@ -1,7 +1,6 @@
 <?php
 require_once ('header.php');
 require_once 'connect.php';
-
 ?>
 
   <div class="col-md-10 col-lg-8 col-xl-7 mx-auto text">

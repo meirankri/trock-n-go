@@ -40,7 +40,7 @@ if ( $numberRows === 0){ ?>
 			<h2><?php echo ($donnees['firstname'])?></h2>
 			<p><?php echo ($donnees['address'])?></p>
 			<p><?php echo ($donnees['city'])?></p>
-			<p><?php echo ($donnees['email'])?></p>
+			<p><a href="mailto:<?php echo ($donnees['email'])?>"><?php echo ($donnees['email'])?></a></p>
 		</div>
 	</div>
 	<?php }
