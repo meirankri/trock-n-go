@@ -14,7 +14,7 @@
   $photo = htmlspecialchars($_FILES['photo']['name']);
   $categorie = htmlspecialchars($_POST['category']);
   $type = htmlspecialchars($_POST['type']);
-//condition si aucune valeur n'est entrez on revient au formulaire
+//condition si aucune valeur n'est entrez en titre et email on revient au formulaire
   if (empty($title && $email )) {?>
   <div class="rechercher montrer">
     <p>Certain champs n'ont pas été rempli</p>
@@ -23,6 +23,7 @@
   header('Refresh:5; url=form_offers.php');
   exit();
 }
+//si adresse ville codepostale ou les valeurs gps sont vide, redirection vers le formuaire
 if ( $address && $city && $zipCode ===null || $lat && $lng===null ) {?>
 <div class="rechercher montrer">
   <p>Veuillez entrez une adresse ou vous géolocalisez</p>
@@ -49,7 +50,7 @@ if (in_array($extensionFiles, $bonne_extension)) {
     $pho = 1;
 }
 }}
-/* test query insert sans prepare*/
+/*  prepare de la requete */
 $reqPrepare = mysqli_prepare($dbconnect, 'insert into offers (firstname,lastname,lat,lng,address,city,zipcode,email,title,description,photo,category,type) values(?,?,?,?,?,?,?,?,?,?,?,?,?)');
    //echo "Erreur lors de publication de l'annonce! ";
 mysqli_stmt_bind_param($reqPrepare, "ssddssissssss", $firstName,$lastName,$lat,$lng,$address,$city,$zipCode,$email,$title,$description,$photo,$categorie,$type);
@@ -58,7 +59,8 @@ mysqli_stmt_execute($reqPrepare);
 if(mysqli_insert_id($dbconnect)){
 	$lastId = mysqli_insert_id($dbconnect);
 }
-/*envoie de fichier avec upload dans un repertoire, en utilisant le derniere id entré comme nom*/
+/*envoie de fichier avec upload dans un repertoire, en utilisant le derniere id entré comme nom,
+qui sera envoyé apres le depot de l'offre de l'utilisateur*/
 $result = mysqli_query($dbconnect, "SELECT * from offers where id= $lastId");
 $numRow = mysqli_num_rows($result);
 if ($numRow === 1) {
