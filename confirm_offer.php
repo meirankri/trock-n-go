@@ -1,53 +1,54 @@
 <?php
-require_once ('header.php');
-require_once 'connect.php';
+  require_once ('header.php');
+  require_once 'connect.php';
 
-$firstName= htmlspecialchars($_POST['firstname']);
-$lastName = htmlspecialchars($_POST['lastname']);
-$lat = htmlspecialchars($_POST['lat']);
-$lng = htmlspecialchars($_POST['lng']);
-$address = htmlspecialchars($_POST['address']);
-$city = htmlspecialchars($_POST['city']);
-$zipCode = htmlspecialchars($_POST['zipcode']);
-$email = htmlspecialchars($_POST['email']);
-$title = htmlspecialchars($_POST['title']);
-$description = htmlspecialchars($_POST['description']);
-$photo = htmlspecialchars($_FILES['photo']['name']);
-$categorie = htmlspecialchars($_POST['category']);
-$type = htmlspecialchars($_POST['type']);
+  $firstName= htmlspecialchars($_POST['firstname']);
+  $lastName = htmlspecialchars($_POST['lastname']);
+  $lat = htmlspecialchars($_POST['lat']);
+  $lng = htmlspecialchars($_POST['lng']);
+  $address = htmlspecialchars($_POST['address']);
+  $city = htmlspecialchars($_POST['city']);
+  $zipCode = htmlspecialchars($_POST['zipcode']);
+  $email = htmlspecialchars($_POST['email']);
+  $title = htmlspecialchars($_POST['title']);
+  $description = htmlspecialchars($_POST['description']);
+  $photo = htmlspecialchars($_FILES['photo']['name']);
+  $categorie = htmlspecialchars($_POST['category']);
+  $type = htmlspecialchars($_POST['type']);
 
 //condition si aucune valeur n'est entrez on revient au formulaire
-if (empty($title && $email )) {?>
+  if (empty($title && $email )) {?>
   <div class="rechercher montrer">
-    <p>Certain champs non pas été rempli</p>
+    <p>Certain champs n'ont pas été rempli</p>
   </div>
   <?php
   header('Refresh:5; url=form_offers.php');
   exit();
 }
 if ( $address && $city && $zipCode ===null || $lat && $lng===null ) {?>
-  <div class="rechercher montrer">
-    <p>Veuillez entrez une addresse ou vous géolocalisez</p>
-  </div>
-  <?php
-  header('Refresh:5; url=form_offers.php');
-  exit();
+<div class="rechercher montrer">
+  <p>Veuillez entrez une adresse ou vous géolocalisez</p>
+</div>
+<?php
+header('Refresh:5; url=form_offers.php');
+exit();
 }
 
 //test si il n'y a pas de photo le nom de la photo est $photoName
 if (empty($photo)) {
   $photoName = "pasPhoto.png";
   $photo = $photoName;
-  }
+}
 
 /* test query insert sans prepare*/
 $reqPrepare = mysqli_prepare($dbconnect, 'insert into offers (firstname,lastname,lat,lng,address,city,zipcode,email,title,description,photo,category,type) values(?,?,?,?,?,?,?,?,?,?,?,?,?)');
 if ($reqPrepare) {
   $pre = 1;
-  echo "prepare passe";
+  echo "Votre annonce a bien été publiée! Redirection...";
+  header("refresh:5;index.php");
 }else {
   $pre = 0;
-  echo "prepare passe pas";
+   //echo "Erreur lors de publication de l'annonce! ";
 }
 if(mysqli_stmt_bind_param($reqPrepare, "ssddssissssss", $firstName,$lastName,$lat,$lng,$address,$city,$zipCode,$email,$title,$description,$photo,$categorie,$type)){
 	$par = 1;
@@ -93,31 +94,31 @@ if ($numRow === 1) {
 
 
  while($donnees = mysqli_fetch_assoc($result))
-	{ ?>
-		<div class="rechercher montrer">
-			<img src="img/<?php echo ($donnees['type'])?>">
-			<h1><?php echo ($donnees['title'])?></h1>
-			<p><?php echo ($donnees['description'])?></p>
-			<img class="img" alt="photo_annonce" src="img/<?php echo ($donnees['photo'])?>">
-			<button class="toggleMore">Contacter</button>
-			<div class="cacher">
-			<h2><?php echo ($donnees['firstname'])?></h2>
-			<p><?php echo ($donnees['address'])?></p>
-			<p><?php echo ($donnees['city'])?></p>
-			<p><?php echo ($donnees['email'])?></p>
-		</div>
-		</div>
-
-	<?php }}
-  else {?>
+   { ?>
     <div class="rechercher montrer">
-      <p>la requete n'est pas passé</p>
-    </div>
-    <?php
-  }
+     <img src="img/<?php echo ($donnees['type'])?>">
+     <h1><?php echo ($donnees['title'])?></h1>
+     <p><?php echo ($donnees['description'])?></p>
+     <img class="img" alt="photo_annonce" src="img/<?php echo ($donnees['photo'])?>">
+     <button class="toggleMore">Contacter</button>
+     <div class="cacher">
+       <h2><?php echo ($donnees['firstname'])?></h2>
+       <p><?php echo ($donnees['address'])?></p>
+       <p><?php echo ($donnees['city'])?></p>
+       <p><?php echo ($donnees['email'])?></p>
+     </div>
+   </div>
+
+   <?php }}
+   else {?>
+   <div class="rechercher montrer">
+    <p>la requete n'est pas passé</p>
+  </div>
+  <?php
+}
 
 
 
 
 require_once ('footer.php');
- ?>
+?>

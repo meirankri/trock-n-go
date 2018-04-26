@@ -4,8 +4,8 @@ require_once ('connect.php');
 ?>
 
 
-    <div id="map"></div>
-
+  <div class=" vertical-center" id="map">
+  </div>
     <script>
 
       var customLabel = {
@@ -17,7 +17,7 @@ require_once ('connect.php');
         }
       };
 
-        function initMap() {
+      function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
           center: new google.maps.LatLng(48.863707, 2.345192),
           zoom: 12
@@ -33,8 +33,8 @@ require_once ('connect.php');
               var address = markerElem.getAttribute('address');
               var type = markerElem.getAttribute('type');
               var point = new google.maps.LatLng(
-                  parseFloat(markerElem.getAttribute('lat')),
-                  parseFloat(markerElem.getAttribute('lng')));
+                parseFloat(markerElem.getAttribute('lat')),
+                parseFloat(markerElem.getAttribute('lng')));
 
               var infowincontent = document.createElement('div');
               var strong = document.createElement('strong');
@@ -61,25 +61,23 @@ require_once ('connect.php');
 
 
 
-      function downloadUrl(url, callback) {
-        var request = window.ActiveXObject ?
-            new ActiveXObject('Microsoft.XMLHTTP') :
-            new XMLHttpRequest;
-        request.onreadystatechange = function() {
-          if (request.readyState == 4) {
-            request.onreadystatechange = doNothing;
-            callback(request, request.status);
-          }
-        };
+        function downloadUrl(url, callback) {
+          var request = window.ActiveXObject ?
+          new ActiveXObject('Microsoft.XMLHTTP') :
+          new XMLHttpRequest;
+          request.onreadystatechange = function() {
+            if (request.readyState == 4) {
+              request.onreadystatechange = doNothing;
+              callback(request, request.status);
+            }
+          };
 
-        request.open('GET', url, true);
-        request.send(null);
-      }
+          request.open('GET', url, true);
+          request.send(null);
+        }
 
-      function doNothing() {}
+        function doNothing() {}
+      </script>
+      <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2KRCIwaZ5chC8CkNhLQXRdklJzXsOw7Y&callback=initMap">
     </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2KRCIwaZ5chC8CkNhLQXRdklJzXsOw7Y&callback=initMap">
-    </script>
-  </body>
-</html>
